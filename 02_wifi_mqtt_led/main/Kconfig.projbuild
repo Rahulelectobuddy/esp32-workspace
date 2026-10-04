@@ -1,0 +1,51 @@
+menu "ESP32 Wi-Fi & MQTT Configuration"
+
+    config ESP_WIFI_SSID
+        string "Wi-Fi SSID"
+        default "YOUR_WIFI_SSID"
+        help
+            SSID (network name) of your Wi-Fi router.
+
+    config ESP_WIFI_PASSWORD
+        string "Wi-Fi Password"
+        default "YOUR_WIFI_PASSWORD"
+        help
+            Password for your Wi-Fi network.
+
+    config ESP_WIFI_MAXIMUM_RETRY
+        int "Maximum Wi-Fi Connection Retries"
+        default 10
+        help
+            Set the Maximum retry count for Wi-Fi connection attempts.
+
+    config MQTT_BROKER_URI
+        string "MQTT Broker URI"
+        default "mqtt://broker.hivemq.com"
+        help
+            MQTT Broker URL (e.g. mqtt://broker.hivemq.com or mqtt://192.168.1.100:1883).
+
+    config MQTT_TOPIC_LED_SET
+        string "MQTT Topic: LED Control Command"
+        default "esp32/led/set"
+        help
+            MQTT topic to subscribe to for controlling LED (payloads: ON, OFF, TOGGLE).
+
+    config MQTT_TOPIC_LED_STATUS
+        string "MQTT Topic: LED State Status"
+        default "esp32/led/status"
+        help
+            MQTT topic to publish LED state changes.
+
+    config MQTT_TOPIC_HEARTBEAT
+        string "MQTT Topic: Periodic Heartbeat"
+        default "esp32/heartbeat"
+        help
+            MQTT topic for sending periodic telemetry/heartbeat messages.
+
+    config HEARTBEAT_INTERVAL_SEC
+        int "Heartbeat Interval (seconds)"
+        default 10
+        help
+            Interval in seconds for sending periodic heartbeat & telemetry status.
+
+endmenu

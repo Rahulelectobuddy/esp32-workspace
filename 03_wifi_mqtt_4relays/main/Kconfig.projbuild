@@ -1,0 +1,69 @@
+menu "ESP32 Wi-Fi & 4-Relay MQTT Configuration"
+
+    config ESP_WIFI_SSID
+        string "Wi-Fi SSID"
+        default "YOUR_WIFI_SSID"
+        help
+            SSID (network name) of your Wi-Fi router.
+
+    config ESP_WIFI_PASSWORD
+        string "Wi-Fi Password"
+        default "YOUR_WIFI_PASSWORD"
+        help
+            Password for your Wi-Fi network.
+
+    config ESP_WIFI_MAXIMUM_RETRY
+        int "Maximum Wi-Fi Connection Retries"
+        default 10
+        help
+            Set the Maximum retry count for Wi-Fi connection attempts.
+
+    config MQTT_BROKER_URI
+        string "MQTT Broker URI"
+        default "mqtt://broker.hivemq.com"
+        help
+            MQTT Broker URL (e.g. mqtt://broker.hivemq.com or mqtt://192.168.1.100:1883).
+
+    config MQTT_TOPIC_BASE
+        string "Base MQTT Topic Prefix"
+        default "esp32/relay"
+        help
+            Base topic prefix. Command topics will be <base>/<1..4>/set and status topics <base>/<1..4>/status.
+
+    config RELAY1_GPIO
+        int "Relay 1 GPIO Pin"
+        default 18
+        help
+            GPIO pin number connected to Relay 1.
+
+    config RELAY2_GPIO
+        int "Relay 2 GPIO Pin"
+        default 19
+        help
+            GPIO pin number connected to Relay 2.
+
+    config RELAY3_GPIO
+        int "Relay 3 GPIO Pin"
+        default 22
+        help
+            GPIO pin number connected to Relay 3.
+
+    config RELAY4_GPIO
+        int "Relay 4 GPIO Pin"
+        default 23
+        help
+            GPIO pin number connected to Relay 4.
+
+    config RELAY_ACTIVE_HIGH
+        bool "Relays are Active HIGH"
+        default n
+        help
+            Select 'y' if GPIO 1 turns relay ON (Active HIGH). Select 'n' if GPIO 0 turns relay ON (Active LOW).
+
+    config HEARTBEAT_INTERVAL_SEC
+        int "Heartbeat Interval (seconds)"
+        default 10
+        help
+            Interval in seconds for sending periodic telemetry & state status of all relays.
+
+endmenu
